@@ -49,7 +49,7 @@ namespace WindowsGame1
             if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta()) 
                 || pelota.getFisicPelota().Intersects(raqueta2.getFisicRaqueta()))
             {
-                pelota.setVelocidad(pelota.getVelocidad()*-1);
+                pelota.Rebota();
             }
         }
         public void Draw(SpriteBatch spritebatch)
