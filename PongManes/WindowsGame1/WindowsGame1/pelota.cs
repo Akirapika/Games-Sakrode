@@ -20,12 +20,13 @@ namespace WindowsGame1
         Rectangle fisicPelota = new Rectangle();
         public pelota(float posix,float posiy)
         {
+
+
+
             posicion = new Vector2(posix,posiy);
             velocidad.X = 8;
             rectPelota = new Rectangle(17,0,15,15);
-            fisicPelota = new Rectangle((int)posix,(int)posiy,15,15);
-
-
+            fisicPelota = new Rectangle((int)posix, (int)posiy, 15, 15);
         }
         public Texture2D getTextura(){return graf_pelota;}
         public void setTextura(Texture2D t){ graf_pelota=t;}
