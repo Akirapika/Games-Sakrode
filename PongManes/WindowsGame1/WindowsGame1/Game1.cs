@@ -19,7 +19,8 @@ namespace WindowsGame1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         mundo pong;
-
+        string puto = "Nachovidal";
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
