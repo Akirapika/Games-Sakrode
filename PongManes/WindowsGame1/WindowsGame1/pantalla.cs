@@ -13,14 +13,18 @@ namespace WindowsGame1
 {
     class pantalla
     {
-        pelota pelota=new pelota(GraphicsDeviceManager.DefaultBackBufferWidth / 2, GraphicsDeviceManager.DefaultBackBufferHeight / 2);
-        raqueta raqueta1 = new raqueta(14, 10);
-        raqueta raqueta2 = new raqueta(GraphicsDeviceManager.DefaultBackBufferWidth - 27, 20);
-        public void Initialize()
-        {/*
-            pelota = new pelota(GraphicsDeviceManager.DefaultBackBufferWidth / 2, GraphicsDeviceManager.DefaultBackBufferHeight / 2);
+        pelota pelota;
+        raqueta raqueta1;
+        raqueta raqueta2;
+        public pantalla()
+        {
             raqueta1 = new raqueta(14, 10);
-            raqueta2 = new raqueta(GraphicsDeviceManager.DefaultBackBufferWidth - 27, 20);*/
+            pelota = new pelota(GraphicsDeviceManager.DefaultBackBufferWidth / 2, GraphicsDeviceManager.DefaultBackBufferHeight / 2);
+            raqueta2 = new raqueta(GraphicsDeviceManager.DefaultBackBufferWidth - 27, 20);
+        }
+        public void Initialize()
+        {
+
         }
         public void LoadContent(ContentManager content)
         {
