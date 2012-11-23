@@ -22,9 +22,17 @@ namespace WindowsGame1
             pelota = new pelota(GraphicsDeviceManager.DefaultBackBufferWidth / 2, GraphicsDeviceManager.DefaultBackBufferHeight / 2);
             raqueta2 = new raqueta(GraphicsDeviceManager.DefaultBackBufferWidth - 27, 20);
         }
-        public void Rebotar()
+        public void RebotarPelota()
         {
-            pelota.setVelocidad(pelota.getVelocidad() * -1);
+            if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta())
+                || pelota.getFisicPelota().Intersects(raqueta2.getFisicRaqueta()))
+            {
+                pelota.setVelocidad(pelota.getVelocidad() * -1);
+            }
+            if (pelota.getPosicion().Y <= 4)
+                pelota.setVelocidad(new Vector2(4, 4));
+            if (pelota.getPosicion().Y >= (GraphicsDeviceManager.DefaultBackBufferHeight) + 105)
+                pelota.setVelocidad(new Vector2(4, -4));
         }
         public void Initialize()
         {
@@ -50,15 +58,7 @@ namespace WindowsGame1
             if (estadoteclado.IsKeyDown(Keys.W))
                 raqueta1.moveY(-5);
             pelota.movePelota(pelota.getVelocidad());
-            if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta()) 
-                || pelota.getFisicPelota().Intersects(raqueta2.getFisicRaqueta()))
-            {
-                Rebotar();
-            }
-            if (pelota.getPosicion().Y <= 4)
-                pelota.setVelocidad(new Vector2(4,4));
-            if (pelota.getPosicion().Y >= (GraphicsDeviceManager.DefaultBackBufferHeight)+120)
-                pelota.setVelocidad(new Vector2(4, -4));
+            RebotarPelota();
         }
         public void Draw(SpriteBatch spritebatch)
         {
