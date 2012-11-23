@@ -44,10 +44,6 @@ namespace WindowsGame1
             fisicPelota.Y = (int)posicion.Y;
         }
         public Rectangle getFisicPelota() { return fisicPelota; }
-        public void Rebota()
-        {
-            velocidad *= -1;
-        }
         
     }
 }
