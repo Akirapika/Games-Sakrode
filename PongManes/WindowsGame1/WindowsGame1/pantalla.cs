@@ -41,9 +41,9 @@ namespace WindowsGame1
                 raqueta2.moveY(5);
             if (estadoteclado.IsKeyDown(Keys.Up) && raqueta2.getY()>=4)
                 raqueta2.moveY(-5);
-            if (estadoteclado.IsKeyDown(Keys.S))
+            if (estadoteclado.IsKeyDown(Keys.S) && raqueta1.getY() >= 4)
                 raqueta1.moveY(5);
-            if (estadoteclado.IsKeyDown(Keys.W))
+            if (estadoteclado.IsKeyDown(Keys.W) && raqueta1.getY() <= (GraphicsDeviceManager.DefaultBackBufferHeight + 40))
                 raqueta1.moveY(-5);
             pelota.movePelota(pelota.getVelocidad());
             if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta()) 
