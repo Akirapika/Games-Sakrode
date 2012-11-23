@@ -37,15 +37,18 @@ namespace WindowsGame1
         }
         public void Update(KeyboardState estadoteclado)
         {
-            if (estadoteclado.IsKeyDown(Keys.Down))
+            //Comprueba las teclas pulsadas y restringe que no se salgan las raquetas de la pantalla
+            if (estadoteclado.IsKeyDown(Keys.Down) && raqueta2.getY()<=(GraphicsDeviceManager.DefaultBackBufferHeight + 40))
                 raqueta2.moveY(5);
-            if (estadoteclado.IsKeyDown(Keys.Up))
+            if (estadoteclado.IsKeyDown(Keys.Up) && raqueta2.getY()>=4)
                 raqueta2.moveY(-5);
-            if (estadoteclado.IsKeyDown(Keys.S))
+            if (estadoteclado.IsKeyDown(Keys.S) && raqueta1.getY() <= (GraphicsDeviceManager.DefaultBackBufferHeight + 40))
                 raqueta1.moveY(5);
-            if (estadoteclado.IsKeyDown(Keys.W))
+            if (estadoteclado.IsKeyDown(Keys.W) && raqueta1.getY() >= 4)
                 raqueta1.moveY(-5);
+            //La pelota se mueve con la velocidad que tiene
             pelota.movePelota(pelota.getVelocidad());
+            //Si el rectangulo de colision de la pelota intersecta con alguna raqueta se invierte el sentido de la velocidad
             if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta()) 
                 || pelota.getFisicPelota().Intersects(raqueta2.getFisicRaqueta()))
             {
