@@ -33,9 +33,9 @@ namespace WindowsGame1
         }
         public void Update(KeyboardState estadoteclado)
         {
-            if (estadoteclado.IsKeyDown(Keys.Down))
+            if (estadoteclado.IsKeyDown(Keys.Down) && raqueta2.getY()<=(GraphicsDeviceManager.DefaultBackBufferHeight + 40))
                 raqueta2.moveY(5);
-            if (estadoteclado.IsKeyDown(Keys.Up))
+            if (estadoteclado.IsKeyDown(Keys.Up) && raqueta2.getY()>=4)
                 raqueta2.moveY(-5);
             if (estadoteclado.IsKeyDown(Keys.S))
                 raqueta1.moveY(5);
