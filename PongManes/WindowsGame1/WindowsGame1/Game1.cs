@@ -38,9 +38,9 @@ namespace WindowsGame1
             // TODO: Add your initialization logic here
             base.Initialize();
             pong.Initialize();
-            graphics.PreferredBackBufferHeight = 800;
-            graphics.PreferredBackBufferWidth = 600;
-            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
 
         }

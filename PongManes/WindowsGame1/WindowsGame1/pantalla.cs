@@ -33,6 +33,18 @@ namespace WindowsGame1
             tablaMovs.Add(Keys.S, desplazamiento*(-1));
 
         }
+        public void RebotarPelota()
+        {
+            if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta())
+                || pelota.getFisicPelota().Intersects(raqueta2.getFisicRaqueta()))
+            {
+                pelota.setVelocidad(pelota.getVelocidad() * -1);
+            }
+            if (pelota.getPosicion().Y <= 4)
+                pelota.setVelocidad(new Vector2(4, 4));
+            if (pelota.getPosicion().Y >= (GraphicsDeviceManager.DefaultBackBufferHeight) + 105)
+                pelota.setVelocidad(new Vector2(4, -4));
+        }
         public void Initialize()
         {
 
@@ -62,11 +74,7 @@ namespace WindowsGame1
             }
              
             pelota.movePelota(pelota.getVelocidad());
-            if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta()) 
-                || pelota.getFisicPelota().Intersects(raqueta2.getFisicRaqueta()))
-            {
-                pelota.setVelocidad(pelota.getVelocidad()*-1);
-            }
+            RebotarPelota();
         }
         public void Draw(SpriteBatch spritebatch)
         {
