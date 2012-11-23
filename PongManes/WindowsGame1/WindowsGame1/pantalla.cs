@@ -54,6 +54,10 @@ namespace WindowsGame1
             {
                 pelota.Rebota();
             }
+            if (pelota.getPosicion().Y <= 4)
+                pelota.setVelocidad(new Vector2(4,4));
+            if (pelota.getPosicion().Y >= (GraphicsDeviceManager.DefaultBackBufferHeight)+120)
+                pelota.setVelocidad(new Vector2(4, -4));
         }
         public void Draw(SpriteBatch spritebatch)
         {
