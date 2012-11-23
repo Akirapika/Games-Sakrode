@@ -20,9 +20,6 @@ namespace WindowsGame1
         Rectangle fisicPelota = new Rectangle();
         public pelota(float posix,float posiy)
         {
-
-
-
             posicion = new Vector2(posix,posiy);
             velocidad.X = 8;
             rectPelota = new Rectangle(17,0,15,15);

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Collections;
 
 namespace WindowsGame1
 {
@@ -16,11 +17,21 @@ namespace WindowsGame1
         pelota pelota;
         raqueta raqueta1;
         raqueta raqueta2;
+        private Hashtable tablaMovs= new Hashtable();
+        // Desplazamiento de las paletas
+        private int desplazamiento = 0;
         public pantalla()
         {
+            desplazamiento=5;
             raqueta1 = new raqueta(14, 10);
             pelota = new pelota(GraphicsDeviceManager.DefaultBackBufferWidth / 2, GraphicsDeviceManager.DefaultBackBufferHeight / 2);
             raqueta2 = new raqueta(GraphicsDeviceManager.DefaultBackBufferWidth - 27, 20);
+            // la tabla has alamacena un indice en nuestro caso una tecla, y devuelve un objeto que contiene un Int
+            tablaMovs.Add(Keys.W,desplazamiento);
+            tablaMovs.Add(Keys.Down, desplazamiento);
+            tablaMovs.Add(Keys.Up, desplazamiento*(-1));
+            tablaMovs.Add(Keys.S, desplazamiento*(-1));
+
         }
         public void Initialize()
         {
@@ -37,14 +48,19 @@ namespace WindowsGame1
         }
         public void Update(KeyboardState estadoteclado)
         {
-            if (estadoteclado.IsKeyDown(Keys.Down))
-                raqueta2.moveY(5);
-            if (estadoteclado.IsKeyDown(Keys.Up))
-                raqueta2.moveY(-5);
-            if (estadoteclado.IsKeyDown(Keys.S))
-                raqueta1.moveY(5);
-            if (estadoteclado.IsKeyDown(Keys.W))
-                raqueta1.moveY(-5);
+            try
+            {
+
+                // La tabla hash devuelve el objeto asociado al teclaro, este objeto es un entero para ello debemos
+                // en primer lugar obtener el tostring el objeto y seguido pasamos esa cadena a entero
+                raqueta2.moveY(int.Parse(tablaMovs[estadoteclado].ToString()));
+                raqueta1.moveY(int.Parse(tablaMovs[estadoteclado].ToString()));
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+             
             pelota.movePelota(pelota.getVelocidad());
             if (pelota.getFisicPelota().Intersects(raqueta1.getFisicRaqueta()) 
                 || pelota.getFisicPelota().Intersects(raqueta2.getFisicRaqueta()))
